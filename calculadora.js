@@ -8,7 +8,7 @@ const alerta = document.getElementById("alertaLimite");
 const divisas = document.getElementById("divisas");
 
 let cantidadConsultas = 0;
-
+let historial = [];
 
 botonEnviar.addEventListener("click", async ev => {
     ev.preventDefault();
@@ -65,9 +65,7 @@ botonEnviar.addEventListener("click", async ev => {
             return JSON.stringify(val)
         }))
 
-    } catch (error) {
-        console.error("Error fetching data:", error);
-    }
+    } 
 }
 });
 
