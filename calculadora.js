@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 const monedaIngresada = document.getElementById("amountUsdWithoutTax");
 const botonEnviar = document.getElementById("submitButton");
 const dolarConvertido = document.getElementById("valueWithoutTax");
