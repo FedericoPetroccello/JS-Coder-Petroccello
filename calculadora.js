@@ -30,11 +30,18 @@ botonEnviar.addEventListener("click", async ev => {
             // Obtener datos de la API
             const response = await fetch("https://api.bluelytics.com.ar/v2/latest");
             const data = await response.json();
-            
+
             let pesos;
             // Determinar la tasa de conversión según la divisa seleccionada
             if (divisas.value === 'dolar') {
                 pesos = data.oficial.value_sell;
+                // Verificar si se superó el límite de compra
+                if (monedaIngresada.value >= 200) {
+                    alerta.textContent = "El límite de compra habilitado por ciudadano es de U$D200";
+                } else {
+                    alerta.textContent = "";
+                }
+
             } else if (divisas.value === 'euro') {
                 pesos = data.oficial_euro.value_sell;
             }
@@ -65,12 +72,6 @@ botonEnviar.addEventListener("click", async ev => {
 
             cantidadConsultas++;
 
-            // Verificar si se superó el límite de compra
-            if (monedaIngresada.value >= 200) {
-                alerta.textContent = "El límite de compra habilitado por ciudadano es de U$D200";
-            } else {
-                alerta.textContent = "";
-            }
 
             // Verificar si se ha superado el límite de consultas
             if (cantidadConsultas === 3) {
